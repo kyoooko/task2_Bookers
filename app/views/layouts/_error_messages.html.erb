@@ -1,0 +1,40 @@
+<head>
+  <style>
+    .error_explanation{
+        width: 450px;
+        border: 2px solid red;
+        padding: 7px;
+        padding-bottom: 0;
+        margin-bottom: 20px;
+        background-color: #f0f0f0;
+        font-size: 12px;
+      }
+    .error-prohibited{
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 15px;
+      font-size: 12px;
+      margin: -7px;
+      margin-bottom: 0;
+      background-color: #c00;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <% if model.errors.any? %>
+    <div class="error_explanation">
+      <h2 class="error-prohibited">
+        <%= pluralize(model.errors.count, "error") %> prohibited this user from being saved:
+      </h2>
+      <div class="alert alert-warning">
+        <ul>
+          <% model.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</body>
