@@ -1,0 +1,44 @@
+<head>
+    <style>
+      body{
+        margin: 33px;
+        font-family: verdana, arial, helvetica, sans-serif;
+        font-size: 13px;
+      }
+      h1{
+        font-size: 2em;
+      }
+      a{
+        color: #333;
+      }
+      a:visited {
+       color: #666;
+      }
+      .field,.actions{
+        margin-bottom:10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Editing Book</h1>
+    <%=form_for(@book) do |f| %>
+      <div class="field">
+        <%= f.label :Title %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :Body %><br>
+        <%= f.text_area :body %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+
+    <%= link_to "Show", book_path(@book.id) %>
+    <span>|</span>
+    <%= link_to "Back", books_path %>
+
+  </body>
+</html>

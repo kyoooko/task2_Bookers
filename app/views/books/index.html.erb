@@ -1,0 +1,69 @@
+<head>
+  <style>
+  body{
+    margin: 33px;
+    font-family: verdana, arial, helvetica, sans-serif;
+  }
+  h1{
+    font-size: 1.6em;
+  }
+  td{
+    padding: 10px;
+  }
+  a{
+    color: #333;
+  }
+  a:visited {
+    color: #666;
+  }
+  th,td,label{
+    font-size: 13px;
+  }
+  h2{
+    font-size: 1.3em;
+  }
+  .field{
+    margin-bottom:10px;
+  }
+  </style>
+</head>
+<body>
+  <h1>Books</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Body</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+          <td><%= link_to "Show", book_path(book.id) %></td>
+          <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+          <td><%= link_to "Destroy", book_path(book.id), method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>New book</h2>
+  <%=form_for(@book) do |f| %>
+    <div class="field">
+      <%= f.label :Title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :Body %><br>
+      <%= f.text_area :body %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</body>
+
+
